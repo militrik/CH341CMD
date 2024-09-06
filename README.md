@@ -1,12 +1,29 @@
- Command line utility for CH341 device.
-Usage:
-  CH341CMD [OPTION...] [optional args]
+# CH341CMD - Command Line Utility for CH341 Device
 
- General options:
-  -h, --help  Print help.
-      --ver   Get the driver, DLL, IC version number.
+`CH341CMD` is a command-line utility designed for interfacing with the CH341 device, providing options for I2C communication and basic operations such as reading and writing bytes.
 
- I2Cc options:
-      --i2c arg  I2C mode with argument as address of device.
-      --wb arg   Write byte for specified cell address.
-      --rb arg   Read byte from specified cell address.
+## Usage
+
+```bash
+CH341CMD [OPTION...] [optional args]
+
+General Options
+
+    -h, --help
+    Print help information about the available options.
+
+    --ver
+    Get the driver, DLL, and IC version number.
+
+I2C Options
+
+    --i2c [arg]
+    Set I2C mode, where [arg] specifies the address of the device.
+
+    --wb [arg]
+    Write a byte to a specified cell address in the I2C device. [arg] should be the cell address.
+
+    --rb [arg]
+    Read a byte from a specified cell address in the I2C device. [arg] should be the cell address.
+
+This project is licensed under the MIT License.
