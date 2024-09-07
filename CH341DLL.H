@@ -470,6 +470,12 @@ Mode:
 BOOL WINAPI CH341SetStream(	// Set the serial port stream mode
 	ULONG iIndex,			// Specify CH341 device serial number
 	ULONG iMode );			// Specify mode
+#define I2C_SPEED_SCL_FREQUENCY_LOW 0
+#define I2C_SPEED_SCL_FREQUENCY_STANDART 0b01
+#define I2C_SPEED_SCL_FREQUENCY_FAST 0b10
+#define I2C_SPEED_SCL_FREQUENCY_HIGH 0b11
+#define SPI_IO_PIN_SINGLE 0b0<<2
+#define SPI_IO_PIN_DOUBLE 0b1<<2
 
 
 BOOL WINAPI CH341SetDelaymS(	// Set the hardware asynchronous delay, return soon after the call, and delay the specified number of milliseconds before the next stream operation
