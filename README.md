@@ -1,6 +1,7 @@
 # CH341CMD - Command Line Utility for CH341 Device
 
-`CH341CMD` is a command-line utility designed for interfacing with the CH341 device, providing options for I2C communication and basic operations such as reading and writing bytes.
+`CH341CMD` is a command-line utility for Windows designed for interfacing with the CH341 device, providing options for I2C communication and basic operations such as reading and writing bytes.
+TODO Realize other modes.
 
 ## Usage
 
