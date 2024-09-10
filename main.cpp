@@ -6,7 +6,7 @@
 #include <Windows.h>
 #include "BitManipulation.h"
 #include <cxxopts.hpp>
-#include "CH341DLL.h"
+#include "CH341DLL_EN.H"
 
 
 int proccedParse(int argc, const char *argv[]);
@@ -53,6 +53,7 @@ int proccedParse(int argc, const char *argv[]) {
         }
 
         if (result.count("ver")) {
+            CH341OpenDevice(0);
             ULONG ver;
             Sleep(20);
             ver = CH341GetDrvVersion();
@@ -75,6 +76,7 @@ int proccedParse(int argc, const char *argv[]) {
             } else {
                 std::cerr << "The IC is not connected." << std::endl;
             }
+            CH341CloseDevice(0);
         }
 
         if (result.count("i2c")) {
@@ -144,8 +146,7 @@ int proccedParse(int argc, const char *argv[]) {
                                     } else {
                                         std::cerr << "Read byte for " << std::hex << std::showbase << static_cast<int>(
                                                     iAddr) <<
-                                                " cell address with " << static_cast<int>(iByteTo) <<
-                                                " value unsuccessful." << std::endl;
+                                                " cell address unsuccessful." << std::endl;
                                     }
                                 }
                             } else {
@@ -154,6 +155,20 @@ int proccedParse(int argc, const char *argv[]) {
                                         << std::endl;
                             }
                         }
+                    }
+                }
+                if (result.count("rb")) {
+                    UCHAR iByteFrom = 0;
+                    UCHAR iAddr = static_cast<UCHAR>(result["rb"].as<int>());
+                    UCHAR iDevice = static_cast<UCHAR>(result["i2c"].as<int>());
+                    Sleep(20);
+                    if (CH341ReadI2C(0, iDevice, iAddr, &iByteFrom)) {
+                        std::cout << "The byte from " << std::hex << std::showbase << static_cast<
+                                    int>(iAddr) << " cell address is " << static_cast<int>(iByteFrom) <<
+                                " value." << std::endl;
+                    } else {
+                        std::cerr << "Read byte for " << std::hex << std::showbase << static_cast<int>(
+                            iAddr) << " cell address unsuccessful." << std::endl;
                     }
                 }
             }
