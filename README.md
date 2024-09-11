@@ -5,7 +5,6 @@ TODO Realize other modes.
 
 ## Usage
 
-```bash
 CH341CMD [OPTION...] [optional args]
 
 General Options
@@ -28,3 +27,12 @@ I2C Options
     Read a byte from a specified cell address in the I2C device. [arg] should be the cell address.
 
 This project is licensed under the MIT License.
+
+## Note
+
+The driver [CH341SER](https://www.wch-ic.com/downloads/CH341SER_EXE.html) must be pre-installed.
+
+## TODO
+- [x] I2C byte
+- [ ] I2C file
+- [ ] SPI
