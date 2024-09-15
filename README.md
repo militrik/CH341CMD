@@ -7,24 +7,21 @@ TODO Realize other modes.
 
 CH341CMD [OPTION...] [optional args]
 
-General Options
+### General Options:
+- `-h`, `--help`    Print help.
+- `--ver`    Get the driver, DLL, IC version number.
 
-    -h, --help
-    Print help information about the available options.
-
-    --ver
-    Get the driver, DLL, and IC version number.
-
-I2C Options
-
-    --i2c [arg]
-    Set I2C mode, where [arg] specifies the address of the device.
-
-    --wb [arg]
-    Write a byte to a specified cell address in the I2C device. [arg] should be the cell address.
-
-    --rb [arg]
-    Read a byte from a specified cell address in the I2C device. [arg] should be the cell address.
+### I2C Options:
+- `--i2c <device>`    I2C mode with argument as the address of the device.
+- `--speed <speed>`    I2C interface speed / SCL frequency.
+    - `low` = low speed / 20KHz
+    - `standard` = standard / 100KHz (default)
+    - `fast` = fast / 400KHz
+    - `high` = high speed / 750KHz
+- `--wb <address,value>`    Write byte for the specified cell address with comma-separated value.
+- `--wf <path>`    Write file in Intel HEX or binary format.
+- `--vrf`    Verify the write procedure.
+- `--rb <address>`    Read byte from the specified cell address.
 
 This project is licensed under the MIT License.
 

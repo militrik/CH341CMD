@@ -41,7 +41,7 @@ int proccedParse(int argc, const char *argv[]) {
                  cxxopts::value<std::string>()->default_value("standard"))
                 ("wb", "Write byte for specified cell address with comma separated value.", cxxopts::value<std::vector<int>>())
                 ("wf", "Write file in Intel HEX or binary format.", cxxopts::value<std::string>())
-                ("vrf", "Verified specified cell address or file.", cxxopts::value<bool>()->default_value("false"))
+                ("vrf", "Verify the write procedure.", cxxopts::value<bool>()->default_value("false"))
                 ("rb", "Read byte from specified cell address.", cxxopts::value<int>());
         options.parse_positional({"i2c", "speed", "wb","wf", "rb"});
 
@@ -159,6 +159,7 @@ int proccedParse(int argc, const char *argv[]) {
                     }
                 }
                 if (result.count("wf")) {
+
                 }
                 if (result.count("rb")) {
                     UCHAR iByteFrom = 0;
