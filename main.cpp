@@ -30,7 +30,7 @@ int proccedParse(int argc, const char *argv[]) {
                 ("h, help", "Print help.")
                 ("ver", "Get the driver, DLL, IC version number.");
         options.parse_positional({"help", "ver"});
-        options.add_options("I2Cc")
+        options.add_options("I2C")
                 ("i2c", "I2C mode with argument as address of device.", cxxopts::value<int>())
                 ("speed",
                  "I2C interface speed/SCL frequency.\r\n"
@@ -39,10 +39,11 @@ int proccedParse(int argc, const char *argv[]) {
                  "fast=fast/400KHz\r\n"
                  "high=high speed/750KHz",
                  cxxopts::value<std::string>()->default_value("standard"))
-                ("wb", "Write byte for specified cell address with value.", cxxopts::value<std::vector<int> >())
-                ("vrf", "Verified specified cell address.", cxxopts::value<bool>()->default_value("false"))
+                ("wb", "Write byte for specified cell address with comma separated value.", cxxopts::value<std::vector<int>>())
+                ("wf", "Write file in Intel HEX or binary format.", cxxopts::value<std::string>())
+                ("vrf", "Verified specified cell address or file.", cxxopts::value<bool>()->default_value("false"))
                 ("rb", "Read byte from specified cell address.", cxxopts::value<int>());
-        options.parse_positional({"i2c", "speed", "wb", "rb"});
+        options.parse_positional({"i2c", "speed", "wb","wf", "rb"});
 
 
         auto result = options.parse(argc, argv);
@@ -156,6 +157,8 @@ int proccedParse(int argc, const char *argv[]) {
                             }
                         }
                     }
+                }
+                if (result.count("wf")) {
                 }
                 if (result.count("rb")) {
                     UCHAR iByteFrom = 0;

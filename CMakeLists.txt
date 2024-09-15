@@ -31,4 +31,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/CH341DLL.lib)
 # Для Windows додаємо необхідні системні бібліотеки
 if (WIN32)
     target_link_libraries(${PROJECT_NAME} PUBLIC setupapi)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static -static-libgcc -static-libstdc++")
 endif()
